@@ -25,7 +25,8 @@ RSpec.describe Grade do
         it "grade's should allow instantiation with string" do
             grade = Grade.new "unexistent_value"
 
-            expect(grade.is_valid?).not_to eq(true)
+            # expect(grade.is_valid?).not_to eq(true)
+            expect(grade.is_valid?).to eq(false)
         end
 
         it "grade's should allow instantiation with token" do

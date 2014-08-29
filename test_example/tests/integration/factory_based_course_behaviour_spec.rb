@@ -18,7 +18,7 @@ RSpec.describe "Course should be know if needs to 'fix' the grades" do
 
         # problematic student is now failing the course
         grade.val = 3
-        expect(course.need_to_fix_grades?).to eq(false)
+        expect(course.need_to_fix_grades?).to eq(true)
     end
 
     # Ejemplos más complejos podrían estar relacionados con publisher/subscriber, pase de mensajes, observers... 

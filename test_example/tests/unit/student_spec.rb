@@ -5,13 +5,15 @@ RSpec.describe "Student" do
     context "can be initialized" do 
         # factories
         it "student-default" do 
-            pending("create a student")
-            this_should_not_get_executed
+            student = FactoryGirl.build(:student)
+            expect(student.class).to eq(Student)
+            # expect(student.average).to eq(1)
         end
 
         it "bad-student" do 
-            pending("create a bad student")
-            this_should_not_get_executed
+            student = FactoryGirl.build(:bad_student)
+            expect(student.class).to eq(Student)
+            expect(student.passing?).to eq(false)
         end
 
         it "good-student" do 
@@ -29,13 +31,19 @@ RSpec.describe "Student" do
 
     context "can execute its public methods" do 
         it "should be able to get the students grades" do 
-            pending("a student-default should have no grades")
-            this_should_not_get_executed
+            student = Student.new 
+            expect(student.grades).to eq([])
+            grade1 = Grade.new 4
+            grade2 = Grade.new 6
+            student.add_grade grade1
+            student.add_grade grade2
+            expect(student.grades).to include(grade1, grade2)
+            expect(student.grades.length).to eq(2)
         end
         
-        it "should be able to get the students grades" do 
-            pending("a [good|bad]student should have some grades")
-            this_should_not_get_executed
+        it "should be able to get a bad_students grades" do 
+            student = FactoryGirl.build(:bad_student)
+            expect(student.grades.length).to be > 0
         end
 
         # add_grade - currently it has no limit of grades
@@ -46,18 +54,40 @@ RSpec.describe "Student" do
 
         # average
         it "shoud be able to get its average with no grades" do 
-            pending("a student should be able to know its grades average")
-            this_should_not_get_executed
+            student = Student.new 
+            expect(student.average).to eq(1)
         end
 
         it "shoud be able to get its average with one grade" do 
-            pending("a student should be able to know its grades average")
-            this_should_not_get_executed
+            student = Student.new 
+            grade1  = Grade.new 4
+            student.add_grade grade1
+
+            expect(student.average).to eq(4)
         end
 
         it "shoud be able to get its average with more grade" do 
-            pending("a student should be able to know its grades average")
-            this_should_not_get_executed
+            # pending("a student should be able to know its grades average")
+            # this_should_not_get_executed
+            student = Student.new 
+            grade1  = Grade.new 4
+            grade2  = Grade.new 6
+            student.add_grade grade1
+            student.add_grade grade2
+
+            expect(student.average).to eq(5)
+
+        end
+
+        it "shoud be able to get its average with more grade with float average" do 
+            student = Student.new 
+            grade1  = Grade.new 4
+            grade2  = Grade.new 5
+            student.add_grade grade1
+            student.add_grade grade2
+
+            expect(student.average).to eq(4.5)
+
         end
 
         # passing?

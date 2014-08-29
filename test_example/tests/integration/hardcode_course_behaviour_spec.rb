@@ -28,7 +28,7 @@ RSpec.describe "Course should be know if needs to 'fix' the grades" do
         expect(course.need_to_fix_grades?).to eq(false)
 
         g_m1.val = 3
-        expect(course.need_to_fix_grades?).to eq(false)
+        expect(course.need_to_fix_grades?).to eq(true)
     end
     
 end 

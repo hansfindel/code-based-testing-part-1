@@ -21,3 +21,8 @@ RSpec.describe Course do
 
     
 end
+
+# factories 
+# refactoring 
+# #expects 
+# module-extensions 
