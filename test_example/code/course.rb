@@ -22,15 +22,15 @@ class Course
 
     def fix_grades
         # bad version!
-        (@students - passing).each do |student|
-            while !student.passing?
-                some_grade = student.grades[Random.rand(student.grades.length)]
-                some_grade.val += 1 if some_grade.val < 7
-            end
-        end
+        # (@students - passing).each do |student|
+        #     while !student.passing?
+        #         some_grade = student.grades[Random.rand(student.grades.length)]
+        #         some_grade.val += 1 if some_grade.val < 7
+        #     end
+        # end
 
         # PENDING - refactor:
-        # GradesManager.manage
+        GradesManager.manage self 
     end
 
 end

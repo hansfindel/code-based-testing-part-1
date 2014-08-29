@@ -14,9 +14,11 @@ class Student
 
 	def average
 		if @grades.length > 0
-			((@grades.map(&:val).inject(0){ |sum, grade| sum += grade }) / @grades.length).to_i
+			((@grades.map(&:val).inject(0){ 
+				|sum, grade| sum += grade }
+			  ).to_f / @grades.length)
 		else
-			-1
+			1
 		end
 	end
 

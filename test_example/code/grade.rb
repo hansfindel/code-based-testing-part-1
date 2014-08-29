@@ -9,7 +9,11 @@ class Grade
             @valid = true
         else
             value = Grade.VALUES[value.to_sym]
-            @valid = true if value 
+            if value 
+                @valid = true 
+            else
+                @valid = false
+            end
             @val =  value || 4
         end
     end
